@@ -12,20 +12,22 @@ namespace KeyLoggerAPI.Repository
     {
         protected readonly KeyLoggerContext _context;
 
-        public KeyLoggerRepository(KeyLoggerContext context) 
+        public KeyLoggerRepository(KeyLoggerContext context)
         {
             _context = context;
         }
 
-        public async Task<bool> AddLogAsync(string origin)
+        public async Task<Log> AddLogAsync(string origin)
         {
-            await _context.AddAsync(new Log
+            var log = await _context.AddAsync(new Log
             {
                 DateTime = DateTime.UtcNow,
                 Origin = origin
             });
 
-            return await _context.SaveChangesAsync() > 0;
+            await _context.SaveChangesAsync();
+
+            return log.Entity;
         }
 
         public async Task<bool> UpdateLogAsync(Log log)
@@ -38,6 +40,11 @@ namespace KeyLoggerAPI.Repository
         public async Task<List<Log>> GetAllAsync()
         {
             return await _context.Logs.Include(x => x.RegisterLogs).ToListAsync();
+        }
+
+        public async Task<Log> GetLogByOriginAsync(string origin)
+        {
+            return await _context.Logs.Include(x => x.RegisterLogs).FirstOrDefaultAsync(x => x.Origin == origin);
         }
     }
 }

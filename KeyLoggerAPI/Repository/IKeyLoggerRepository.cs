@@ -6,7 +6,8 @@ namespace KeyLoggerAPI.Repository
 {
     public interface IKeyLoggerRepository
     {
-        Task<bool> AddLogAsync(string origin);
+        Task<Log> AddLogAsync(string origin);
+        Task<Log> GetLogByOriginAsync(string origin);
         Task<bool> UpdateLogAsync(Log log);
         Task<List<Log>> GetAllAsync();
     }

