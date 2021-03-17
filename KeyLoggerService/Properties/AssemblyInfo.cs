@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("KeyLogger")]
+[assembly: AssemblyTitle("KeyLoggerService")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("KeyLogger")]
+[assembly: AssemblyProduct("KeyLoggerService")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("32f391c7-6bf9-4f8f-91fa-1d4f1f661b72")]
+[assembly: Guid("1d2cda21-929d-4619-b98b-750e68f5d164")]
 
 // Version information for an assembly consists of the following four values:
 //
