@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace KeyLogger
+namespace KeyLoggerAPP
 {
     public class GlobalKeyboardHookEventArgs : HandledEventArgs
     {

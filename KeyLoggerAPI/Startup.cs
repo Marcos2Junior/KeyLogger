@@ -1,12 +1,15 @@
 using KeyLoggerAPI.Context;
 using KeyLoggerAPI.Repository;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
@@ -32,10 +35,21 @@ namespace KeyLoggerAPI
             services.AddScoped<IKeyLoggerRepository, KeyLoggerRepository>();
             var ConnectionString = "server=localhost;userid=root;password=root;database=KeyLogger";
             services.AddDbContext<KeyLoggerContext>(x => x.UseMySql(ConnectionString, ServerVersion.AutoDetect(ConnectionString)));
-            services.AddControllers();
-            services.AddSwaggerGen(c =>
+
+            services.AddMvc(m =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "KeyLoggerAPI", Version = "v1" });
+                m.EnableEndpointRouting = false;
+            });
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            .AddCookie(o =>
+            {
+                o.AccessDeniedPath = new PathString("/Login/");
+                o.LoginPath = new PathString("/Login/");
+                o.Cookie.Path = "/";
+                o.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+                o.Cookie.HttpOnly = true;
+                o.LogoutPath = new PathString("/Logout/");
             });
         }
 
@@ -45,20 +59,24 @@ namespace KeyLoggerAPI
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "KeyLoggerAPI v1"));
             }
 
             app.UseHttpsRedirection();
 
-            app.UseRouting();
-
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
+            app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions()
             {
-                endpoints.MapControllers();
+                FileProvider = new PhysicalFileProvider("/download-app"),
+                RequestPath = new PathString("/download-app")
             });
+
+            app.UseRouting();
+            app.UseStatusCodePagesWithReExecute("/Login");
+            app.UseAuthentication();
+            app.UseAuthorization();
+            app.UseCookiePolicy();
+
+            app.UseMvcWithDefaultRoute();
         }
     }
 }

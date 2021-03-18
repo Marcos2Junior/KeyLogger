@@ -5,7 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace KeyLogger
+namespace KeyLoggerAPP
 {
     public class GlobalKeyboardHook : IDisposable
     {

@@ -17,21 +17,6 @@ namespace KeyLoggerAPI.Controllers
             _repository = repository;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetAsync()
-        {
-            try
-            {
-
-            }
-            catch (Exception)
-            {
-
-            }
-
-            return BadRequest();
-        }
-
         [HttpPost]
         public async Task<IActionResult> PostAsync([FromBody] string data)
         {
