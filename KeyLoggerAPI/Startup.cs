@@ -4,19 +4,10 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace KeyLoggerWEB
 {
@@ -33,7 +24,7 @@ namespace KeyLoggerWEB
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IKeyLoggerRepository, KeyLoggerRepository>();
-            var ConnectionString = "server=localhost;userid=root;password=123456;database=KeyLogger";
+            var ConnectionString = "server=localhost;userid=root;password=root;database=KeyLogger";
             services.AddDbContext<KeyLoggerContext>(x => x.UseMySql(ConnectionString, ServerVersion.AutoDetect(ConnectionString)));
 
             services.AddMvc(m =>

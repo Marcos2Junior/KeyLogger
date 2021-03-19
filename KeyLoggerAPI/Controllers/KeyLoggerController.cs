@@ -23,12 +23,11 @@ namespace KeyLoggerWEB.Controllers
             try
             {
                 /*
-                 Pensando ainda como vou fazer o esquema para identificar a origem...
-
-                origem deve ser fixo pois é a identificacao de log na base de dados,
-                mas deve ser combinado com um token que alterne a cada requisicao para caso alguem tente interceptar a requisicao mandando algo invalido
-
+                    Pensando ainda como vou fazer o esquema para identificar a origem...
+                    origem deve ser fixo pois é a identificacao de log na base de dados,
+                    mas deve ser combinado com um token que alterne a cada requisicao para caso alguem tente interceptar a requisicao mandando algo invalido
                  */
+
                 if (Request.Headers.TryGetValue("X-ORIGIN", out Microsoft.Extensions.Primitives.StringValues value))
                 {
                     var log = await _repository.GetLogByOriginAsync(value.FirstOrDefault());

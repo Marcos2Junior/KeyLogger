@@ -21,3 +21,19 @@ footer {
     margin: auto;
 }
 
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: #555;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #313131;
+}
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #272222;
+    }
+

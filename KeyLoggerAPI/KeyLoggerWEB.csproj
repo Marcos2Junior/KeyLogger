@@ -24,4 +24,8 @@
     <Folder Include="wwwroot\download-app\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Library\Library.csproj" />
+  </ItemGroup>
+
 </Project>
