@@ -1,0 +1,48 @@
+﻿@model List<KeyLoggerWEB.Entitys.Log>
+
+@{
+    ViewData["tittle"] = "Pagina inicial";
+}
+<section>
+    <form class="logout" asp-action="Logout" method="post">
+        <input type="submit" value="Logout" />
+    </form>
+
+    <div class="group-log">
+
+        @foreach (var log in Model)
+        {
+            string s = log.RegisterLogs.Count == 1 ? "registro" : "registros";
+
+            <div class="log">
+                <h1>@log.Origin</h1>
+                <p>
+                    @log.DateTime.ToLocalTime() - @log.RegisterLogs.Count() @s
+                </p>
+                <div class="card-log">
+                    @foreach (var item in log.RegisterLogs)
+                    {
+                        <div class="register-log">
+                            <span>@item.DateTime.ToLocalTime()</span> 
+
+                            <form asp-action="Delete" method="post">
+                                <input type="hidden" value="@item.ID" name="registerID" />
+                                <input type="hidden" value="@log.ID" name="logID" />
+                                <input type="submit" value="APAGAR" />
+                            </form>
+                            
+                            <p>
+                                @item.Register
+                            </p>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+
+</section>
+
+@section styles{
+    <link rel="Stylesheet" href="@Href("~/css/index.css")" />
+}

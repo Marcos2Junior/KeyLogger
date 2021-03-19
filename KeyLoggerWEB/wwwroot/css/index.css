@@ -1,0 +1,61 @@
+﻿section{
+    position:relative;
+    margin:10px auto 50px auto;
+}
+
+.logout{
+    position: absolute;
+    top:0;
+    right:0;
+    margin-top:10px;
+}
+
+    .logout input {
+        cursor: pointer;
+        padding: 5px;
+        background-color: transparent;
+        border: 1px solid #717171;
+        color: #717171;
+        border-radius: 5px;
+    }
+
+        .logout input:hover {
+            color: #bab8b8;
+        }
+
+    .group-log{
+        padding-top:30px;
+    }
+
+.log{
+    margin-bottom:50px;
+}
+
+.register-log form {
+    position: absolute;
+    top:0;
+    right:0;
+}
+
+    .register-log form input {
+        color: #752f2f;
+        margin:10px;
+    }
+
+.card-log {
+    overflow-y: auto;
+    max-height: 600px;
+    padding: 10px;
+}
+
+.register-log {
+    position: relative;
+    border: 1px solid #aaaaaa;
+    padding: 20px;
+    margin: 20px auto 20px auto;
+}
+
+.register-log span {
+    margin-bottom: 20px;
+}
+

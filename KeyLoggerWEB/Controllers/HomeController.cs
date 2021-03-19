@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace KeyLoggerWEB.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly IKeyLoggerRepository _repository;
@@ -20,13 +21,13 @@ namespace KeyLoggerWEB.Controllers
             _repository = keyLoggerRepository;
         }
 
-        [Authorize, Route("Index")]
+        [Route("Index")]
         public async Task<IActionResult> Index()
         {
             return View(await _repository.GetAllAsync());
         }
 
-        [HttpGet, Route(""), Route("Login")]
+        [HttpGet, AllowAnonymous, Route(""), Route("Login")]
         public IActionResult Login()
         {
             if (User.Identity?.IsAuthenticated == true)
@@ -42,6 +43,12 @@ namespace KeyLoggerWEB.Controllers
         {
             await HttpContext.SignOutAsync();
             return RedirectToAction(nameof(Login));
+        }
+
+        [HttpPost("Delete/{registerID}/{logID}")]
+        public async Task<IActionResult> Delete(int registerID, int logID)
+        {
+            return Ok();
         }
 
         [HttpPost("Login")]
