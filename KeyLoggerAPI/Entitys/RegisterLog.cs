@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KeyLoggerAPI.Entitys
+namespace KeyLoggerWEB.Entitys
 {
     public class RegisterLog
     {

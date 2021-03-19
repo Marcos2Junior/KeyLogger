@@ -1,7 +1,7 @@
-﻿using KeyLoggerAPI.Entitys;
+﻿using KeyLoggerWEB.Entitys;
 using Microsoft.EntityFrameworkCore;
 
-namespace KeyLoggerAPI.Context
+namespace KeyLoggerWEB.Context
 {
     public class KeyLoggerContext : DbContext
     {

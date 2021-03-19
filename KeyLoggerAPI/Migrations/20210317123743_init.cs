@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace KeyLoggerAPI.Migrations
+namespace KeyLoggerWEB.Migrations
 {
     public partial class init : Migration
     {

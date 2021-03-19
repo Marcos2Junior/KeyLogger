@@ -1,5 +1,5 @@
-using KeyLoggerAPI.Context;
-using KeyLoggerAPI.Repository;
+using KeyLoggerWEB.Context;
+using KeyLoggerWEB.Repository;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -18,7 +18,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace KeyLoggerAPI
+namespace KeyLoggerWEB
 {
     public class Startup
     {
@@ -33,7 +33,7 @@ namespace KeyLoggerAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IKeyLoggerRepository, KeyLoggerRepository>();
-            var ConnectionString = "server=localhost;userid=root;password=root;database=KeyLogger";
+            var ConnectionString = "server=localhost;userid=root;password=123456;database=KeyLogger";
             services.AddDbContext<KeyLoggerContext>(x => x.UseMySql(ConnectionString, ServerVersion.AutoDetect(ConnectionString)));
 
             services.AddMvc(m =>
@@ -64,11 +64,6 @@ namespace KeyLoggerAPI
             app.UseHttpsRedirection();
 
             app.UseStaticFiles();
-            app.UseStaticFiles(new StaticFileOptions()
-            {
-                FileProvider = new PhysicalFileProvider("/download-app"),
-                RequestPath = new PathString("/download-app")
-            });
 
             app.UseRouting();
             app.UseStatusCodePagesWithReExecute("/Login");

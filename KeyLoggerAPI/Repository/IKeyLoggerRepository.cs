@@ -1,8 +1,8 @@
-﻿using KeyLoggerAPI.Entitys;
+﻿using KeyLoggerWEB.Entitys;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace KeyLoggerAPI.Repository
+namespace KeyLoggerWEB.Repository
 {
     public interface IKeyLoggerRepository
     {

@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Key Logger</title>
+    <link rel="shortcut icon" href="~/KeyLogger.ico">
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div class="content">
+        @RenderBody()
+
+    </div>
+    <footer>
+        <p> &copy; @DateTime.Now.Year - Key Logger </p>
+    </footer>
+
+    @RenderSection("styles", false)
+</body>
+</html>

@@ -1,5 +1,5 @@
-﻿using KeyLoggerAPI.Models;
-using KeyLoggerAPI.Repository;
+﻿using KeyLoggerWEB.Models;
+using KeyLoggerWEB.Repository;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace KeyLoggerAPI.Controllers
+namespace KeyLoggerWEB.Controllers
 {
     public class HomeController : Controller
     {
@@ -21,6 +21,7 @@ namespace KeyLoggerAPI.Controllers
         }
 
         [Authorize]
+        [Route("Index")]
         public async Task<IActionResult> Index()
         {
             return View(await _repository.GetAllAsync());

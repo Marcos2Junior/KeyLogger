@@ -1,12 +1,12 @@
-﻿using KeyLoggerAPI.Context;
-using KeyLoggerAPI.Entitys;
+﻿using KeyLoggerWEB.Context;
+using KeyLoggerWEB.Entitys;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace KeyLoggerAPI.Repository
+namespace KeyLoggerWEB.Repository
 {
     public class KeyLoggerRepository : IKeyLoggerRepository
     {

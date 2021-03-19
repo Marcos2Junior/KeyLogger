@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace KeyLoggerAPI.Entitys
+namespace KeyLoggerWEB.Entitys
 {
     public class Log
     {

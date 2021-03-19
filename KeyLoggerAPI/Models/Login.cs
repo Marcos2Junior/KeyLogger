@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace KeyLoggerAPI.Models
+namespace KeyLoggerWEB.Models
 {
     public class Login
     {

@@ -1,11 +1,11 @@
-﻿using KeyLoggerAPI.Entitys;
-using KeyLoggerAPI.Repository;
+﻿using KeyLoggerWEB.Entitys;
+using KeyLoggerWEB.Repository;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace KeyLoggerAPI.Controllers
+namespace KeyLoggerWEB.Controllers
 {
     [ApiController, Route("api")]
     public class KeyLoggerController : Controller

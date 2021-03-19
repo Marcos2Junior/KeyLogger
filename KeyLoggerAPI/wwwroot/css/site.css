@@ -1,0 +1,23 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Old+Standard+TT&display=swap');
+
+body {
+    background-color: #000000;
+    color: #ccbbbb;
+    font-family: 'Libre Baskerville', serif;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid #232323;
+    font-family: 'Old Standard TT', serif;
+}
+
+.content {
+    max-width: 75vw;
+    margin: auto;
+}
+

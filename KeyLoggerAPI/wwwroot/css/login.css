@@ -1,0 +1,14 @@
+﻿.alert{
+    color:#d81212;
+}
+
+form {
+    text-align:center;
+    margin-top:40vh;
+}
+input {
+    text-align: center;
+    width: 100%;
+    font-size: 20pt;
+}
+
