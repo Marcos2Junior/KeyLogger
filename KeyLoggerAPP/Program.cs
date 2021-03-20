@@ -28,7 +28,6 @@ namespace KeyLoggerAPP
                 startInfo.Arguments = "restart";
                 Process.Start(startInfo);
             }
-
         }
     }
 }

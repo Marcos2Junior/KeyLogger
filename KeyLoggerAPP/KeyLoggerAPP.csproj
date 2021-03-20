@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <None Remove="KeyLogger.ico" />
+    <None Remove="ServiceHTTP.cs~RFab6e69.TMP" />
   </ItemGroup>
 
   <ItemGroup>

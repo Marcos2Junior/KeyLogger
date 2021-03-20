@@ -24,7 +24,7 @@ namespace KeyLoggerWEB
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IKeyLoggerRepository, KeyLoggerRepository>();
-            var ConnectionString = "server=localhost;userid=root;password=root;database=KeyLogger";
+            var ConnectionString = "server=localhost;userid=root;password=123456;database=KeyLogger";
             services.AddDbContext<KeyLoggerContext>(x => x.UseMySql(ConnectionString, ServerVersion.AutoDetect(ConnectionString)));
 
             services.AddMvc(m =>

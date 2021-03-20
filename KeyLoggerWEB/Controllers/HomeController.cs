@@ -51,7 +51,7 @@ namespace KeyLoggerWEB.Controllers
             return Ok();
         }
 
-        [HttpPost("Login")]
+        [HttpPost("Login"), AllowAnonymous]
         public async Task<IActionResult> Login(Login login)
         {
             try
